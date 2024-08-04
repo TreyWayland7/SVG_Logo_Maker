@@ -38,7 +38,7 @@ function generateSVGLogoFile(response){
             if (err)
                 console.log(err);
               else {
-                console.log("File written successfully\n");
+                console.log("Generated logo.svg\n");
               }
         });
         
