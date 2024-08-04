@@ -13,7 +13,12 @@ const promptArray = [
     },
     {
         type: 'input',
-        message: 'Enter color Keyword or hexadecimal number.',
+        message: 'Enter text color Keyword or hexadecimal number.',
+        name: 'textColor'
+    },
+    {
+        type: 'input',
+        message: 'Enter logo color Keyword or hexadecimal number.',
         name: 'logoColor'
     },
     {
@@ -49,14 +54,14 @@ function generateShapeObject(userResponse){
     console.log(userResponse);
     switch(userResponse.logoShape){
         case "circle":
-            const circleObj = new Circle(userResponse.logoText, userResponse.logoColor);
+            const circleObj = new Circle(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return circleObj;
         case "triangle":
             console.log("here");
-            const trianlgeObj = new Triangle(userResponse.logoText, userResponse.logoColor);
+            const trianlgeObj = new Triangle(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return trianlgeObj;
         case "square":
-            const squareObj = new Square(userResponse.logoText, userResponse.logoColor);
+            const squareObj = new Square(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return squareObj;
 
     }
