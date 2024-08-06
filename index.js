@@ -3,13 +3,15 @@ const inquirer = require("inquirer");
 const Square = require("./lib/Square");
 const Triangle = require("./lib/Triangle");
 const Circle = require("./lib/Circle");
-
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
 const promptArray = [
     {
-        type: 'input',
+        type: 'maxlength-input',
         message: 'Enter Logo Text. Max 3 Char.',
-        name: 'logoText'
+        name: 'logoText',
+        maxLength: 3
     },
     {
         type: 'input',
@@ -35,7 +37,6 @@ inquirer
 
 
 function generateSVGLogoFile(response){
-        console.log(response)
         const shapeObject = generateShapeObject(response);
         const dataToWrite = shapeObject.render();
 
@@ -46,12 +47,9 @@ function generateSVGLogoFile(response){
                 console.log("Generated logo.svg\n");
               }
         });
-        
-
 }
 
 function generateShapeObject(userResponse){
-    console.log(userResponse);
     switch(userResponse.logoShape){
         case "circle":
             const circleObj = new Circle(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
@@ -63,7 +61,6 @@ function generateShapeObject(userResponse){
         case "square":
             const squareObj = new Square(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return squareObj;
-
     }
 }
 
