@@ -55,7 +55,6 @@ function generateShapeObject(userResponse){
             const circleObj = new Circle(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return circleObj;
         case "triangle":
-            console.log("here");
             const trianlgeObj = new Triangle(userResponse.logoText.substring(0,3), userResponse.logoColor, userResponse.textColor);
             return trianlgeObj;
         case "square":
